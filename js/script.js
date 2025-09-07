@@ -78,25 +78,93 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ---------------- Övriga Accordions ---------------- //
+// // ---------------- Övriga Accordions ---------------- //
+// document.addEventListener("DOMContentLoaded", () => {
+//   const gitCategory = document.querySelectorAll(".gitcategory");
+//   gitCategory.forEach(acc => {
+//     const categoryHeader = acc.querySelector(".gitcategory-header");
+//     const categoryContent = acc.querySelector(".gitcategory-content");
+//     const categoryGrid = document.getElementById("categoryGrid");
+//     const id = acc.id;
+//     const headerContent = id + "-header";
+//     const contentContent = id + "-content";
+//     categoryHeader.addEventListener("click", () => {
+//       acc.classList.toggle("open");
+//       console.log(id);
+//       console.log(headerContent);
+//       console.log(contentContent);
+//       categoryHeader.classList.toggle("open");  
+//       const gitpresenter = document.getElementById("gitpresenter");
+//       const gitpresenterHeader = document.getElementById("gitpresenter-header");
+//       const gitpresenterContent = document.getElementById("gitpresenter-content");
+//       gitpresenter.classList.add("open"); //öppnar gitpresenter
+//       gitpresenterContent.classList.add("open");
+//       gitpresenterHeader.classList.add("open");
+//       gitpresenterHeader.innerHTML = document.getElementById(headerContent).innerHTML;
+//       gitpresenterContent.innerHTML = document.getElementById(contentContent).innerHTML;
+//       categoryGrid.style.maxHeight = "0px"; //gömmer categorygrid
+//       categoryGrid.style.overflow = "hidden"; //gömmer categorygrid
+//     });
+//   });
+// });
+
+// Togglar gitpresenter om man klickar på den (så att man kan stänga den)
 document.addEventListener("DOMContentLoaded", () => {
+  const gitpresenter = document.getElementById("gitpresenter");
+  const gitpresenterHeader = document.getElementById("gitpresenter-header");
+  const gitpresenterContent = document.getElementById("gitpresenter-content");
+  const categoryGrid = document.getElementById("categoryGrid");
   const gitCategory = document.querySelectorAll(".gitcategory");
-  gitCategory.forEach(acc => {
-    const categoryHeader = acc.querySelector(".gitcategory-header");
-    const categoryContent = acc.querySelector(".gitcategory-content");
-    const categoryGrid = document.getElementById("categoryGrid");
-    const id = acc.id;
 
-    categoryHeader.addEventListener("click", () => {
-      acc.classList.toggle("open");
-      console.log(id);
+  // Hjälpfunktion: vänta tills transition är klar
+  function waitForTransition(element, callback) {
+    let done = false;
+    const handler = (e) => {
+      if (e.propertyName === "max-height") {
+        element.removeEventListener("transitionend", handler);
+        if (!done) {
+          done = true;
+          callback();
+        }
+      }
+    };
+    element.addEventListener("transitionend", handler);
 
-      
+    // fallback om transition inte körs (t.ex. inga ändringar)
+    setTimeout(() => {
+      if (!done) {
+        done = true;
+        callback();
+      }
+    }, 800); // samma som din transition-tid i CSS
+  }
 
+  // Klick på en kategori
+  gitCategory.forEach((category) => {
+    category.addEventListener("click", () => {
+      // stäng kategorigrid först
+      categoryGrid.classList.toggle("open");
 
-      categoryContent.classList.toggle("open");
-      categoryHeader.classList.toggle("open");
-      categoryGrid.classList.toggle("expanded");
+      waitForTransition(categoryGrid, () => {
+        // öppna presenter
+        gitpresenter.classList.toggle("open");
+
+        // fyll innehållet
+        gitpresenterHeader.innerHTML =
+          document.getElementById(category.id + "-header").innerHTML + " <span class='material-symbols-outlined right'>close</span>";
+        gitpresenterContent.innerHTML =
+          document.getElementById(category.id + "-content").innerHTML;
+        gitpresenterContent.classList.add("open");
+      });
+    });
+  });
+
+  // Klick på presenter-header → stäng presenter, öppna grid
+  gitpresenterHeader.addEventListener("click", () => {
+    gitpresenter.classList.toggle("open");
+
+    waitForTransition(gitpresenter, () => {
+      categoryGrid.classList.toggle("open");
     });
   });
 });
