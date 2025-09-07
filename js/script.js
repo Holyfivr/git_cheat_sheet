@@ -6,7 +6,7 @@ if (btn && sidebar) {
   const icon = btn.querySelector('.material-symbols-outlined');
   btn.addEventListener('click', () => {
     sidebar.classList.toggle('open');
-    // Ändra ikonens riktning
+  
     if (sidebar.classList.contains('open')) {
 
       if (window.innerWidth < 575) icon.textContent = 'keyboard_double_arrow_up';
