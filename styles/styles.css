@@ -6,11 +6,12 @@ html, body {
   font-family: "Quicksand", system-ui;
   scroll-behavior: smooth;
   overflow-x: hidden;
-}
-
-html {
   scrollbar-width: none;          /* Firefox */
   -ms-overflow-style: none;       /* IE/Edge */
+}
+.index-body {
+    overflow: hidden;               /* Disable scrolling */
+
 }
 
 html::-webkit-scrollbar {
@@ -19,20 +20,10 @@ html::-webkit-scrollbar {
 
 :root {
   --color-primary: rgb(122, 122, 122);
-  --color-secondary: #50e3c2;
+  --color-secondary: rgb(100,100,100);
 }
 
 
-:root {
-    --color-primary: rgb(122, 122, 122);
-    --color-secondary: #50e3c2;
-    --bs-breakpoint-xs: 0;
-    --bs-breakpoint-sm: 576px;
-    --bs-breakpoint-md: 768px;
-    --bs-breakpoint-lg: 992px;
-    --bs-breakpoint-xl: 1200px;
-    --bs-breakpoint-xxl: 1400px;
-}
 
 /* -------------------- Nav/Sidebar -------------------- */
 .quicksand-nav-bold {
@@ -157,81 +148,7 @@ html::-webkit-scrollbar {
   box-shadow: 2px 2px 2px var(--color-primary);
 }
 
-
-.accordion-container {
-    gap: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    justify-content: center;
-} 
-
-.accordion-item {
-    width: 100%;
-}
-
-
-.accordion-button {
-    background: #fff;
-    cursor: pointer;
-    border-radius: 10px 10px 0px 0px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, text-shadow 0.2s ease;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-size: 1.1rem;
-    font-style: normal;
-    color: var(--color-primary) !important;
-    flex-direction: row;
-    z-index: 2;
-    align-self: flex-start;
-    font-family: "Quicksand", sans-serif;
-    border: 1px solid var(--color-primary);
-    border-bottom: none;
-}
-.accordion-button:hover {
-    box-shadow: 1px 1px 6px var(--color-primary);
-    text-shadow: 2px 2px 3px var(--color-primary);
-}
-
-.accordion-body {
-    overflow: hidden;
-    height: 1rem;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border: 1px solid var(--color-primary);
-    border-top: none;
-    border-radius: 0px 0px 10px 10px;
-    font-family: "Quicksand", sans-serif;
-    box-shadow: 0px 1px 5px var(--color-primary);
-  background: linear-gradient(to bottom, #ffffff, #ffffff, #ffffff, #ffffff, #666666);
-  transition:
-    height 0.7s ease,
-    border 0.7s ease,
-    box-shadow 0.7s ease,
-    padding-top 0.7s ease,
-    padding-bottom 0.7s ease,
-    background-color 0.7s ease;
-  z-index: 1;
-}
-.accordion-body.open {    
-  background: linear-gradient(to bottom, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #666666);
-  box-shadow: 0px 4px 6px var(--color-primary);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-@media (max-width:600px) {
-    .accordion-item {
-        width: 90vw;
-    }
-    .accordion-container {
-        grid-template-columns: repeat(auto-fit, minmax(80%, 1fr));
-    }
-}
+/* -------------------- Mainframe/Iframe -------------------- */
 
 .mainframe {
   position: absolute;
@@ -242,14 +159,7 @@ html::-webkit-scrollbar {
   overflow: hidden;
   z-index: 0;
 }
-main {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    box-shadow: 1px 1px 6px var(--color-primary);
-    border-radius: 10px;
-    background: #ffffff;
-    overflow: hidden;
-}
+
 .main-container {
     max-width: 1200px;
     margin: auto;
@@ -296,4 +206,210 @@ main {
     margin-right: 1rem;
     padding: 1rem;
   }
+}
+
+
+
+
+
+
+/* -------------------- Git Basics -------------------- */
+.gitbasics {
+  width: 100%;
+  margin: 2rem auto;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  border-radius: 10px;
+  
+}
+
+.gitbasics:hover {
+    box-shadow: 2px 2px 6px var(--color-primary);
+    
+}
+.gitbasics-header {
+    position: relative;
+  padding: 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 
+  transform 0.5s ease,
+  background 0.5s ease,
+  box-shadow 0.5s ease,
+  border-radius 0.5s ease;
+  z-index: 2;
+}
+.gitbasics-header:hover {
+  background: rgb(100, 100, 100);
+}
+.gitbasics-header.open {
+  border-radius: 10px 10px 0px 0px; 
+  box-shadow: 0px 2px 6px var(--color-primary);
+}
+.gitbasics-content.open {
+    border: 1px solid var(--color-primary);
+    max-height: 1500px; /* tillräckligt högt för att rymma innehållet */
+}
+.gitbasics.open{
+    box-shadow: 2px 2px 6px var(--color-primary);
+}
+.gitbasics-content {
+    position: relative;
+  max-height: 0;
+  margin-top: -1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgb(100,100,100);
+  transition: max-height 0.7s ease, border 0.7s ease;
+  padding: 0 1rem 0 1rem;
+  
+}
+
+
+
+
+
+/* -------------------- Git Category -------------------- */
+
+.category-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  
+}
+
+/* .expanded {
+    grid-template-columns: 1fr;
+} */
+
+.gitcategory {
+  width: 100%;
+  margin: 2rem auto;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  border-radius: 10px;
+  
+}
+.gitcategory:hover {
+    box-shadow: 2px 2px 6px var(--color-primary);
+    
+}
+.gitcategory.open{
+    box-shadow: 2px 2px 6px var(--color-primary);
+}
+
+
+
+.gitcategory-header {
+  position: relative;
+  padding: 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 
+  transform 0.3s ease,
+  background 0.3s ease,
+  box-shadow 0.3s ease,
+  border-radius 0.3s ease;
+  z-index: 2;
+}
+.gitcategory-header:hover {
+  background: rgb(100, 100, 100);
+}
+.gitcategory-header.open {
+  border-radius: 10px 10px 0px 0px; 
+  box-shadow: 0px 2px 6px var(--color-primary);
+}
+
+
+.gitcategory-content {
+    position: relative;
+    max-height: 0;
+    margin-top: -1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgb(100,100,100);
+    transition: max-height 0.3s ease, border 0.3s ease;
+    padding: 0 1rem 0 1rem;
+    
+}
+.gitcategory-content.open {
+    border: 1px solid var(--color-primary);
+    max-height: 1500px; /* tillräckligt högt för att rymma innehållet */
+}
+
+
+
+
+
+
+/* --- modals --- */
+
+
+.card {
+  flex: 1 1 250px;
+  padding: 1rem;
+  background: #f9f9f9;
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 2px 2px 6px var(--color-primary);
+}
+
+
+/* Modal styling */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 1000px;
+  width: 90%;
+  animation: fadeIn 0.3s ease;
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Lite animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+
+
+
+
+code {
+    background: #1f1f1f;
+    color: coral;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1rem;
 }
