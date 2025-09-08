@@ -46,10 +46,14 @@
                         <ul>
                             <li class="list-title">Repository (repo)</li>
                             <dd>The database of a project’s history. Create with <code>git init</code> or copy with
-                                <code>git clone</code>. <p class="item-description">This is where all your files are stored.</p></dd>
+                                <code>git clone</code>. <p class="item-description">This is where all your files are
+                                    stored.</p>
+                            </dd>
                             <li class="list-title">Working directory (working tree)</li>
                             <dd>Your checked-out files. Edit here; inspect changes with <code>git status</code> and
-                                <code>git diff</code>. <span class="item-description"></span>This is where you make changes to your files with your preferred editor.</span></dd>
+                                <code>git diff</code>. <span class="item-description"></span>This is where you make
+                                changes to your files with your preferred editor.</span>
+                            </dd>
                             <li class="list-title">Staging area (index)</li>
                             <dd>Where changes are prepared before committing. Add files with <code>git add</code>.</dd>
                             <li class="list-title">HEAD</li>
@@ -57,12 +61,14 @@
                                 branch.</dd>
                             <li class="list-title">Remote</li>
                             <dd>A named connection to another repository (e.g., <code>origin</code>). Manage with
-                                <code>git remote</code>.</dd>
+                                <code>git remote</code>.
+                            </dd>
                             <li class="list-title">Origin</li>
                             <dd>Default name of the remote created by <code>git clone</code>.</dd>
                             <li class="list-title">Upstream</li>
                             <dd>The remote branch a local branch tracks. Set with
-                                <code>git branch --set-upstream-to origin/main</code>.</dd>
+                                <code>git branch --set-upstream-to origin/main</code>.
+                            </dd>
                             <li class="list-title">Merge conflict</li>
                             <dd>Overlapping changes require manual resolution; mark resolved with <code>git add</code>
                                 and commit.</dd>
@@ -101,7 +107,8 @@
 
                             <li class="list-title">Add</li>
                             <dd>Stage changes for the next commit: <code>git add [file]</code> or stage all changes with
-                                <code>git add .</code>.</dd>
+                                <code>git add .</code>.
+                            </dd>
 
                             <li class="list-title">Commit</li>
                             <dd>Save staged changes with a message: <code>git commit -m "Your commit message"</code>.
@@ -120,7 +127,8 @@
 
                             <li class="list-title">Checkout</li>
                             <dd>Switch branches or restore files: <code>git checkout [branch name]</code> or
-                                <code>git checkout [file]</code>.</dd>
+                                <code>git checkout [file]</code>.
+                            </dd>
 
                             <li class="list-title">Merge</li>
                             <dd>Combine changes from one branch into another: <code>git merge [branch name]</code>.</dd>
@@ -128,105 +136,527 @@
                             <li class="list-title">Log</li>
                             <dd>View commit history: <code>git log</code>.</dd>
                         </ul>
-                        <br><br>
-
-
-
-
-
+                        <br>
+                        
+                        <br>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <div class="category-grid" id="categoryGrid">
 
 
+                    <!-- ##################################################################### INIT ################################################################################ -->
+
+
+
                     <div class="gitcategory" id="category1">
                         <div class="gitcategory-header primary-bg" id="category1-header">init</div>
-                        <div class="gitcategory-content" id="category1-content">as<br>d ads<br>d adsqadadsfadsfdas<br>d
-                            adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category1-content">
+
+                            <h2 class="kumar-one-outline">Git init</h2>
+                            <p class="quicksand-text-regular">
+                                Creates a new repository in the current or specified directory.<br>
+                                Used when you're starting a new project, or want to start version-controlling an
+                                existing project.
+
+                            </p>
+
+                            <p class="quicksand-text-regular"><strong>Usage:</strong>
+                                <code>git init [options] [&lt;directory&gt;]</code>
+                            </p>
+
+                            <h2 class="kumar-one-outline">Options</h2>
+                            <ul>
+                                <li class="list-title"><code>-q</code>, <code>--quiet</code></li>
+                                <dd>Minimal output; suppresses init messages.</dd>
+
+                                <li class="list-title"><code>--bare</code></li>
+                                <dd>Creates a bare repo without a working directory. The root of the repo itself IS
+                                    .git. Typical for servers/CI systems.</dd>
+
+                                <li class="list-title"><code>-b &lt;name&gt;</code>,
+                                    <code>--initial-branch=&lt;name&gt;</code>
+                                </li>
+                                <dd>Specifies the name of the first branch (overrides <code>init.defaultBranch</code>).
+                                    Example: <code>-b main</code>.</dd>
+
+                                <li class="list-title"><code>--template=&lt;directory&gt;</code></li>
+                                <dd>Uses files from a template directory (hooks, attributes, exclude, etc.) during init.
+                                </dd>
+
+                                <li class="list-title"><code>--separate-git-dir=&lt;directory&gt;</code></li>
+                                <dd>Stores Git metadata in a separate location. The working directory then contains a
+                                    <code>.git</code> pointer to that location.
+                                </dd>
+
+                                <li class="list-title"><code>--object-format=sha1|sha256</code></li>
+                                <dd>Chooses object format (hash algorithm) for the new repo. <code>sha256</code>
+                                    requires compatible tools and should only be used for entirely new repos.</dd>
+
+                                <li class="list-title"><code>--ref-format=files|reftable</code></li>
+                                <dd>Chooses storage format for references. <code>files</code> is default;
+                                    <code>reftable</code> is a modern backend and may require a newer Git.
+                                </dd>
+
+                                <li class="list-title"><code>--shared</code>[<code>=&lt;value&gt;</code>]</li>
+                                <dd>
+                                    Sets sharing level/permissions (affects e.g. <code>core.sharedRepository</code>).
+                                    Common values:<br>
+                                    • <code>umask</code> (default & respects system umask)<br>
+                                    • <code>group</code> (group-writable, good for teams)<br>
+                                    • <code>all</code>/<code>world</code>/<code>everybody</code> (read/write for
+                                    everyone)<br>
+                                    • <code>0xxx</code> (octal, e.g. <code>0770</code>, <code>0660</code>)<br>
+                                    Applies mainly to bare repos; in non-bare repos it mostly affects the .git contents.
+                                </dd>
+
+                                <li class="list-title"><code>&lt;directory&gt;</code> (optional)</li>
+                                <dd>Location where the repo should be created. If omitted, the current directory is
+                                    initialized.</dd>
+                            </ul>
+
+
+                            <div class="example-box">
+                                <h2 class="kumar-one-outline">Examples</h2>
+                                <ul>
+                                    <li class="list-title">Initialize in the current directory</li>
+                                    <dd><code>git init</code></dd>
+
+                                    <li class="list-title">Initialize in a new directory with main branch "main"</li>
+                                    <dd><code>git init -b main project</code></dd>
+
+                                    <li class="list-title">Bare repo for group sharing</li>
+                                    <dd><code>git init --bare --shared=group /srv/git/my-projects.git</code></dd>
+
+                                    <li class="list-title">Separate Git metadata from working directory</li>
+                                    <dd><code>git init --separate-git-dir=/var/lib/git/meta .</code></dd>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+
+
+                    <!-- ##################################################################### CLONE ################################################################################ -->
+
+
                     <div class="gitcategory" id="category2">
                         <div class="gitcategory-header primary-bg" id="category2-header">clone</div>
-                        <div class="gitcategory-content" id="category2-content">a22222222222sds<br>d ads<br>d ads<br>d
-                            ad</div>
+                        <div class="gitcategory-content" id="category2-content">
+
+
+                            <h2 class="kumar-one-outline">Git clone</h2>
+                            <p class="quicksand-text-regular">
+                                Creates a local copy of an existing Git repository. The clone contains all history,
+                                branches, and references from the source repository.
+                                Used to obtain a working copy from a remote repo (e.g. GitHub, GitLab, Bitbucket) or
+                                another local repo.
+                            </p>
+
+                            <p class="quicksand-text-regular"><strong>Usage:</strong>
+                                <code>git clone [options] &lt;repository&gt; [&lt;directory&gt;]</code>
+                            </p>
+
+                            <h2 class="kumar-one-outline">Options</h2>
+                            <ul>
+                                <li class="list-title"><code>-q</code>, <code>--quiet</code></li>
+                                <dd>Suppresses progress reporting and diagnostic messages.</dd>
+
+                                <li class="list-title"><code>--bare</code></li>
+                                <dd>Creates a bare clone (no working directory). The root of the repo itself IS .git.
+                                    Common for server-side repos.</dd>
+
+                                <li class="list-title"><code>--mirror</code></li>
+                                <dd>Creates a mirror clone. Implies <code>--bare</code>, and also clones all refs
+                                    (including remote-tracking branches, notes, etc.). Useful for backups or server
+                                    mirrors.</dd>
+
+                                <li class="list-title"><code>--branch &lt;name&gt;</code>, <code>-b &lt;name&gt;</code>
+                                </li>
+                                <dd>Checks out the given branch instead of the default (usually <code>HEAD</code> of
+                                    remote’s default branch).</dd>
+
+                                <li class="list-title"><code>--depth &lt;n&gt;</code></li>
+                                <dd>Creates a shallow clone with history truncated to the last <code>n</code> commits.
+                                    Reduces download size.</dd>
+
+                                <li class="list-title"><code>--single-branch</code></li>
+                                <dd>Clones only the history leading to the tip of a single branch. Often combined with
+                                    <code>--branch</code> or <code>--depth</code>.
+                                </dd>
+
+                                <li class="list-title"><code>--recurse-submodules</code>[<code>=yes|no|on-demand</code>]
+                                </li>
+                                <dd>Initializes and clones submodules as well. Default is <code>on-demand</code> if
+                                    configured, otherwise no.</dd>
+
+                                <li class="list-title"><code>--origin &lt;name&gt;</code>, <code>-o &lt;name&gt;</code>
+                                </li>
+                                <dd>Uses the given name instead of <code>origin</code> for the remote.</dd>
+
+                                <li class="list-title"><code>--config key=value</code></li>
+                                <dd>Sets a configuration option in the new clone. Can be repeated multiple times.</dd>
+
+                                <li class="list-title"><code>&lt;repository&gt;</code></li>
+                                <dd>URL or path of the repo to clone. Can be HTTPS, SSH, Git protocol, or local path.
+                                </dd>
+
+                                <li class="list-title"><code>&lt;directory&gt;</code> (optional)</li>
+                                <dd>Directory where the repo will be cloned. If omitted, Git uses the name of the repo.
+                                </dd>
+                            </ul>
+
+                          
+                            <div class="example-box">
+                                <h2 class="kumar-one-outline">Examples</h2>
+                                <ul>
+                                    <li class="list-title">Clone from HTTPS</li>
+                                    <dd><code>git clone https://github.com/user/project.git</code></dd>
+
+                                    <li class="list-title">Clone with SSH</li>
+                                    <dd><code>git clone git@github.com:user/project.git</code></dd>
+
+                                    <li class="list-title">Clone into a specific directory</li>
+                                    <dd><code>git clone https://github.com/user/project.git mydir</code></dd>
+
+                                    <li class="list-title">Shallow clone with 1 commit</li>
+                                    <dd><code>git clone --depth 1 https://github.com/user/project.git</code></dd>
+
+                                    <li class="list-title">Clone only a single branch</li>
+                                    <dd><code>git clone --branch develop --single-branch https://github.com/user/project.git</code>
+                                    </dd>
+
+                                    <li class="list-title">Mirror an entire repo (for backup/server)</li>
+                                    <dd><code>git clone --mirror https://github.com/user/project.git</code></dd>
+                                </ul>
+
+                            </div>
+                        </div>
                     </div>
+
+
+                     <!-- ##################################################################### STATUS ################################################################################ -->
                     <div class="gitcategory" id="category3">
                         <div class="gitcategory-header primary-bg" id="category3-header">status</div>
-                        <div class="gitcategory-content" id="category3-content">a3333333333sdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category3-content">
+
+
+                            <h2 class="kumar-one-outline">Git status</h2>
+                            <p class="quicksand-text-regular">
+                                Displays the state of the working directory and staging area.<br>
+                                Shows which changes are staged, unstaged, or untracked.
+                                Used frequently to check what will be included in the next commit.
+                            </p>
+
+                            <p class="quicksand-text-regular"><strong>Usage:</strong>
+                                <code>git status [options]</code>
+                            </p>
+
+                            <h2 class="kumar-one-outline">Options</h2>
+                            <ul>
+                                <li class="list-title"><code>-s</code>, <code>--short</code></li>
+                                <dd>Outputs a short summary instead of the full descriptive format.</dd>
+
+                                <li class="list-title"><code>-b</code>, <code>--branch</code></li>
+                                <dd>Shows branch information along with status (helpful in short format).</dd>
+
+                                <li class="list-title"><code>--ignored</code></li>
+                                <dd>Also shows ignored files.</dd>
+
+                                <li class="list-title"><code>--untracked-files[=&lt;mode&gt;]</code></li>
+                                <dd>Controls how untracked files are shown. Modes:
+                                    • <code>no</code> (do not show untracked files)
+                                    • <code>normal</code> (default, shows untracked files and dirs)
+                                    • <code>all</code> (shows individual untracked files inside dirs)
+                                </dd>
+                            </ul>
+
+                          
+
+                            <div class="example-box">
+                                <h2 class="kumar-one-outline">Examples</h2>
+                                <ul>
+                                    <li class="list-title">Check status in full format</li>
+                                    <dd><code>git status</code></dd>
+
+                                    <li class="list-title">Compact summary with branch info</li>
+                                    <dd><code>git status -sb</code></dd>
+
+                                    <li class="list-title">Hide untracked files</li>
+                                    <dd><code>git status --untracked-files=no</code></dd>
+
+                                    <li class="list-title">Show ignored files as well</li>
+                                    <dd><code>git status --ignored</code></dd>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+
+
+                    <!-- ##################################################################### ADD ################################################################################ -->
+
+
+
+
                     <div class="gitcategory" id="category4">
                         <div class="gitcategory-header primary-bg" id="category4-header">add</div>
-                        <div class="gitcategory-content" id="category4-content">asdas<br>d ads<br>d ads<br>d adas<br>d
-                            asd</div>
+                        <div class="gitcategory-content" id="category4-content">
+
+
+
+                            <h2 class="kumar-one-outline">Git add</h2>
+                            <p class="quicksand-text-regular">
+                                Adds file contents to the staging area (index) in preparation for the next commit.<br>
+                                You use <code>git add</code> to tell Git which changes you want to include in the next
+                                commit.
+                                Does not affect the repository itself until <code>git commit</code> is run.
+                            </p>
+
+                            <p class="quicksand-text-regular"><strong>Usage:</strong>
+                                <code>git add [options] [&lt;pathspec&gt;...]</code>
+                            </p>
+
+                            <h2 class="kumar-one-outline">Options</h2>
+                            <ul>
+                                <li class="list-title"><code>-A</code>, <code>--all</code></li>
+                                <dd>Stages all changes (tracked and untracked, including deletions).</dd>
+
+                                <li class="list-title"><code>-u</code>, <code>--update</code></li>
+                                <dd>Stages modifications and deletions of already tracked files, but not new files.</dd>
+
+                                <li class="list-title"><code>-p</code>, <code>--patch</code></li>
+                                <dd>Interactively select hunks of changes to stage.</dd>
+
+                                <li class="list-title"><code>-i</code>, <code>--interactive</code></li>
+                                <dd>Interactive mode for staging changes (menus and prompts).</dd>
+
+                                <li class="list-title"><code>-n</code>, <code>--dry-run</code></li>
+                                <dd>Shows what would be added without actually staging anything.</dd>
+
+                                <li class="list-title"><code>--ignore-removal</code></li>
+                                <dd>Ignores file deletions when staging changes.</dd>
+
+                                <li class="list-title"><code>--chmod=(+x|-x)</code></li>
+                                <dd>Changes the executable bit of staged files.</dd>
+
+                                <li class="list-title"><code>&lt;pathspec&gt;</code></li>
+                                <dd>Specifies the files or directories to add. Can include globs (e.g.
+                                    <code>*.js</code>).</dd>
+                            </ul>
+
+
+                        <div class="example-box">
+                            <h2 class="kumar-one-outline">Examples</h2>
+                            <ul>
+                                <li class="list-title">Stage a single file</li>
+                                <dd><code>git add file.txt</code></dd>
+
+                                <li class="list-title">Stage all changes in the repo</li>
+                                <dd><code>git add -A</code></dd>
+
+                                <li class="list-title">Stage only modified and deleted files (no new files)</li>
+                                <dd><code>git add -u</code></dd>
+
+                                <li class="list-title">Stage all files in current directory</li>
+                                <dd><code>git add .</code></dd>
+
+                                <li class="list-title">Interactively choose which hunks to add</li>
+                                <dd><code>git add -p</code></dd>
+
+                                <li class="list-title">Mark a script as executable</li>
+                                <dd><code>git add --chmod=+x script.sh</code></dd>
+                            </ul>
+</div>
+
+
+                        </div>
                     </div>
+
+
+                    <!-- ##################################################################### COMMIT ################################################################################ -->
+
                     <div class="gitcategory" id="category5">
                         <div class="gitcategory-header primary-bg" id="category5-header">commit</div>
-                        <div class="gitcategory-content" id="category5-content">as<br>d ads<br>d ads<br>d ads<br>d
-                            ads<br>d ads<br>d ads<br>d adsd</div>
+                        <div class="gitcategory-content" id="category5-content">
+
+                            <h2 class="kumar-one-outline">Git commit</h2>
+<p class="quicksand-text-regular">
+    Records the staged changes in the repository history as a new commit.<br>
+    A commit creates a snapshot of the staging area, with a unique ID (hash), message, and metadata (author, timestamp).
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git commit [options] [--] [&lt;pathspec&gt;...]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-m &lt;msg&gt;</code></li>
+    <dd>Specifies the commit message inline.</dd>
+
+    <li class="list-title"><code>-a</code>, <code>--all</code></li>
+    <dd>Stages all tracked changes (skips <code>git add</code> for modified/deleted files).</dd>
+
+    <li class="list-title"><code>--amend</code></li>
+    <dd>Replaces the last commit with a new one (includes staged changes, keeps history linear).</dd>
+
+    <li class="list-title"><code>--no-edit</code></li>
+    <dd>Used with <code>--amend</code> to keep the previous commit message without editing.</dd>
+
+    <li class="list-title"><code>--dry-run</code></li>
+    <dd>Shows what would be committed without actually creating a commit.</dd>
+
+    <li class="list-title"><code>--allow-empty</code></li>
+    <dd>Creates a commit even if no changes are staged.</dd>
+
+    <li class="list-title"><code>--author="Name &lt;email&gt;"</code></li>
+    <dd>Overrides the author for this commit.</dd>
+
+    <li class="list-title"><code>&lt;pathspec&gt;</code></li>
+    <dd>Optionally limit commit to specific files already staged.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Commit with a message</li>
+        <dd><code>git commit -m "Add new feature"</code></dd>
+
+        <li class="list-title">Commit all tracked changes (skip <code>git add</code>)</li>
+        <dd><code>git commit -a -m "Quick fix"</code></dd>
+
+        <li class="list-title">Amend the last commit (edit message or include new changes)</li>
+        <dd><code>git commit --amend</code></dd>
+
+        <li class="list-title">Amend the last commit without changing the message</li>
+        <dd><code>git commit --amend --no-edit</code></dd>
+
+        <li class="list-title">Commit with a custom author</li>
+        <dd><code>git commit --author="Jane Doe &lt;jane@example.com&gt;" -m "Hotfix"</code></dd>
+
+        <li class="list-title">Create an empty commit (useful for CI triggers)</li>
+        <dd><code>git commit --allow-empty -m "Trigger build"</code></dd>
+    </ul>
+</div>
+
+
+
+                        </div>
                     </div>
+
+                    <!-- ##################################################################### LOG ################################################################################ -->
                     <div class="gitcategory" id="category6">
                         <div class="gitcategory-header primary-bg" id="category6-header">log</div>
                         <div class="gitcategory-content" id="category6-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### DIFF ################################################################################ -->
+
                     <div class="gitcategory" id="category7">
                         <div class="gitcategory-header primary-bg" id="category7-header">diff</div>
                         <div class="gitcategory-content" id="category7-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### BRANCH ################################################################################ -->
+
                     <div class="gitcategory" id="category8">
                         <div class="gitcategory-header primary-bg" id="category8-header">branch</div>
                         <div class="gitcategory-content" id="category8-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### CHECKOUT ################################################################################ -->
                     <div class="gitcategory" id="category9">
                         <div class="gitcategory-header primary-bg" id="category9-header">checkout</div>
                         <div class="gitcategory-content" id="category9-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### MERGE ################################################################################ -->
+
                     <div class="gitcategory" id="category10">
                         <div class="gitcategory-header primary-bg" id="category10-header">merge</div>
                         <div class="gitcategory-content" id="category10-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### REBASE ################################################################################ -->
                     <div class="gitcategory" id="category11">
                         <div class="gitcategory-header primary-bg" id="category11-header">rebase</div>
                         <div class="gitcategory-content" id="category11-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### STASH ################################################################################ -->
                     <div class="gitcategory" id="category12">
                         <div class="gitcategory-header primary-bg" id="category12-header">stash</div>
                         <div class="gitcategory-content" id="category12-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### RESET ################################################################################ -->
                     <div class="gitcategory" id="category13">
                         <div class="gitcategory-header primary-bg" id="category13-header">reset</div>
                         <div class="gitcategory-content" id="category13-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### FETCH ################################################################################ -->
                     <div class="gitcategory" id="category14">
                         <div class="gitcategory-header primary-bg" id="category14-header">fetch</div>
                         <div class="gitcategory-content" id="category14-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### PULL ################################################################################ -->
                     <div class="gitcategory" id="category15">
                         <div class="gitcategory-header primary-bg" id="category15-header">pull</div>
                         <div class="gitcategory-content" id="category15-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### PUSH ################################################################################ -->
                     <div class="gitcategory" id="category16">
                         <div class="gitcategory-header primary-bg" id="category16-header">push</div>
                         <div class="gitcategory-content" id="category16-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### TAG ################################################################################ -->
                     <div class="gitcategory" id="category17">
                         <div class="gitcategory-header primary-bg" id="category17-header">tag</div>
                         <div class="gitcategory-content" id="category17-content">asdas<br>d adas<br>d asd</div>
                     </div>
+
+                    <!-- ##################################################################### REMOTE ################################################################################ -->
                     <div class="gitcategory" id="category18">
                         <div class="gitcategory-header primary-bg" id="category18-header">remote</div>
                         <div class="gitcategory-content" id="category18-content">asdas<br>d adas<br>d asd</div>
                     </div>
 
 
-
+                    <!-- ##################################################################################################################################################### -->
                 </div>
 
+
+
+
+                <!-- Git presenter - Boxen som innehåll visas i när man klickar på en av knapparna -->
                 <div class="gitpresenter" id="gitpresenter">
-                    <div class="gitpresenter-header" id="gitpresenter-header">asd</div>
-                    <div class="gitpresenter-content" id="gitpresenter-content">ddddddddddddddddddddd<br><br>d asd</div>
+                    <div class="gitpresenter-header" id="gitpresenter-header"></div>
+                    <div class="gitpresenter-content" id="gitpresenter-content"></div>
                 </div>
-
             </section>
         </main>
 

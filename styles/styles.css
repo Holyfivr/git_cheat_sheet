@@ -8,10 +8,16 @@ html, body {
   overflow-x: hidden;
   scrollbar-width: none;          /* Firefox */
   -ms-overflow-style: none;       /* IE/Edge */
+  background-image: linear-gradient(to right, #f0f0f0, #ffffff, #f0f0f0);
 }
+
+body.dark {
+  background-image: linear-gradient(to right, var(--color-dark-bg), #1a1a1a, var(--color-dark-bg)) !important;
+  color: var(--color-dark-text) !important;
+}
+
 .index-body {
     overflow: hidden;               /* Disable scrolling */
-
 }
 
 html::-webkit-scrollbar {
@@ -23,6 +29,8 @@ html::-webkit-scrollbar {
   --color-secondary: rgb(100,100,100);
   --color-third: #4f07c2;
   --color-fourth: #721010;
+  --color-dark-bg: #2c2c2c;
+  --color-dark-text: #e0e0e0;
 }
 
 .list-title {
@@ -38,6 +46,7 @@ html::-webkit-scrollbar {
   background-color: var(--color-primary);
 }
 
+
 /* -------------------- Nav/Sidebar -------------------- */
 .quicksand-nav-bold {
   position: fixed;
@@ -47,7 +56,7 @@ html::-webkit-scrollbar {
   font-weight: 600;
   font-size: 1.5rem;
   color: var(--color-primary);
-  background: #fff;
+  
   text-decoration: none;
   z-index: 10;
   transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
@@ -82,6 +91,11 @@ html::-webkit-scrollbar {
 }
 .sidebar.open {
     width: 20rem;
+}
+.sidebar.dark {
+  background-color: var(--color-dark-bg) !important;
+  color: var(--color-dark-text) !important;
+  box-shadow: 1px 1px 6px #555 !important;
 }
 
 .sidebar a {
@@ -118,10 +132,14 @@ html::-webkit-scrollbar {
   .sidebar {
     width: 100%;
     padding-left: 0.5rem;
+    margin-top: -3rem;
+    padding-bottom: 3rem;
   }
   .sidebar.open {
     width: 100%;
     height: 12rem;
+    margin-top: 0;
+    padding-bottom: 0rem;
   }
   .sidebar a {
     padding: 4px 5px;
@@ -142,6 +160,11 @@ html::-webkit-scrollbar {
   border-radius: 10%;
   z-index: 10;
   transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+.toggle-btn.dark {
+  background-color: var(--color-dark-bg) !important;
+  color: var(--color-dark-text) !important;
+  box-shadow: 1px 1px 6px #555 !important;
 }
 
 .toggle-btn:hover {
@@ -185,10 +208,12 @@ html::-webkit-scrollbar {
 .cr {
     position: fixed;
     bottom: 0;
-    width: 10rem;
+    padding-left: 0.5rem;
+    font-size: 0.9rem;
+    width: 14rem;
     height: 2.5rem;
     background-color: #f1f1f1;
-    text-align: center;
+    text-align: left;
     line-height: 2.5rem;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     font-family: "Quicksand", sans-serif;
@@ -196,6 +221,11 @@ html::-webkit-scrollbar {
     z-index: 1;
     border-radius: 0px 10px 0px 0px;
     border: 1px solid var(--color-primary);
+}
+.cr.dark {
+  background-color: var(--color-dark-bg) !important;
+  color: var(--color-dark-text) !important;
+  border: 1px solid #555 !important;
 }
 @media (max-width:300px) {  
     .cr {
@@ -386,6 +416,13 @@ html::-webkit-scrollbar {
   box-shadow: 4px 4px 4px black;
   background: var(--color-secondary);
 }
+
+@media (max-width: 300px) {
+  .gitcategory-header {
+    max-width: 13rem;
+    margin-left:-0.7rem;
+  }
+}
 /* .gitcategory-header.open {
   border-radius: 10px 10px 0px 0px; 
   box-shadow: 0px 2px 6px var(--color-primary);
@@ -454,11 +491,18 @@ html::-webkit-scrollbar {
     float: right;  
 }
 
+@media (max-width: 600px) {
+  .gitpresenter-content {
+    margin: 0.2rem;
+    padding: 0.2rem;
+    margin-top: -1rem;
+  }
+}
 
 
 code {
     background: #636363;
-    color: rgb(36, 217, 241);
+    color: rgb(255, 255, 255);
     padding: 2px 4px;
     border-radius: 4px;
     font-family: "Courier New", Courier, monospace;
@@ -466,4 +510,53 @@ code {
     text-shadow: 1px 1px 1px black;
     font-weight: bold;
     
+}
+
+.example-box {
+  background: #c4c2c2;
+  border: 4px solid coral;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: inset 1px 1px 6px #000000;
+}
+
+.example-box h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0.3rem;
+}
+
+.example-box code {
+  background: #1f1f1f;
+  color: coral;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: "Courier New", Courier, monospace;
+}
+.example-box.dark {
+background-image: linear-gradient(to right, var(--color-dark-bg), #1a1a1a, var(--color-dark-bg)) !important;
+  color: var(--color-dark-text);
+}
+
+
+.darkmode {
+  position: fixed;
+  bottom: -0.6rem;
+  left: 8.2rem;
+  margin: 1rem;
+  padding: 0.5rem 0.5rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px var(--color-primary);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.darkmode.active {
+  border: none;
+  text-decoration: none;
 }
