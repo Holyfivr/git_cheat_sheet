@@ -2,7 +2,6 @@
 const btn = document.querySelector('.toggle-btn');
 const sidebar = document.querySelector('.sidebar');
 
-// Toggle sidebar open/close on button click
 if (btn && sidebar) {
   const icon = btn.querySelector('.material-symbols-outlined');
   btn.addEventListener('click', () => {
@@ -20,7 +19,6 @@ if (btn && sidebar) {
   });
 }
 
-// Update icon based on window resize
 window.addEventListener('resize', () => {
   if (sidebar.classList.contains('open')) {
     if (window.innerWidth < 575) btn.querySelector('.material-symbols-outlined').textContent = 'keyboard_double_arrow_up';
@@ -68,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   accordions.forEach(acc => {
     const header = acc.querySelector(".gitbasics-header");
     const content = acc.querySelector(".gitbasics-content");
+    
 
     header.addEventListener("click", () => {
   acc.classList.toggle("open");
@@ -78,45 +77,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// // ---------------- Övriga Accordions ---------------- //
-// document.addEventListener("DOMContentLoaded", () => {
-//   const gitCategory = document.querySelectorAll(".gitcategory");
-//   gitCategory.forEach(acc => {
-//     const categoryHeader = acc.querySelector(".gitcategory-header");
-//     const categoryContent = acc.querySelector(".gitcategory-content");
-//     const categoryGrid = document.getElementById("categoryGrid");
-//     const id = acc.id;
-//     const headerContent = id + "-header";
-//     const contentContent = id + "-content";
-//     categoryHeader.addEventListener("click", () => {
-//       acc.classList.toggle("open");
-//       console.log(id);
-//       console.log(headerContent);
-//       console.log(contentContent);
-//       categoryHeader.classList.toggle("open");  
-//       const gitpresenter = document.getElementById("gitpresenter");
-//       const gitpresenterHeader = document.getElementById("gitpresenter-header");
-//       const gitpresenterContent = document.getElementById("gitpresenter-content");
-//       gitpresenter.classList.add("open"); //öppnar gitpresenter
-//       gitpresenterContent.classList.add("open");
-//       gitpresenterHeader.classList.add("open");
-//       gitpresenterHeader.innerHTML = document.getElementById(headerContent).innerHTML;
-//       gitpresenterContent.innerHTML = document.getElementById(contentContent).innerHTML;
-//       categoryGrid.style.maxHeight = "0px"; //gömmer categorygrid
-//       categoryGrid.style.overflow = "hidden"; //gömmer categorygrid
-//     });
-//   });
-// });
-
-// Togglar gitpresenter om man klickar på den (så att man kan stänga den)
+// - Git basics - //
 document.addEventListener("DOMContentLoaded", () => {
+
+  const gitbasics = document.getElementById("gitbasics");
+  const gitbasicsHeader = document.getElementById("gitbasics-header");
+
+  if (gitbasics && gitbasicsHeader) {
+    gitbasics.addEventListener("click", () => {
+      gitbasicsHeader.classList.remove("pulse-bg");
+    });
+  }
+
   const gitpresenter = document.getElementById("gitpresenter");
   const gitpresenterHeader = document.getElementById("gitpresenter-header");
   const gitpresenterContent = document.getElementById("gitpresenter-content");
   const categoryGrid = document.getElementById("categoryGrid");
   const gitCategory = document.querySelectorAll(".gitcategory");
 
-  // Hjälpfunktion: vänta tills transition är klar
   function waitForTransition(element, callback) {
     let done = false;
     const handler = (e) => {
@@ -130,26 +108,25 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     element.addEventListener("transitionend", handler);
 
-    // fallback om transition inte körs (t.ex. inga ändringar)
     setTimeout(() => {
       if (!done) {
         done = true;
         callback();
       }
-    }, 800); // samma som din transition-tid i CSS
+    }, 800); 
   }
 
-  // Klick på en kategori
+  
   gitCategory.forEach((category) => {
     category.addEventListener("click", () => {
-      // stäng kategorigrid först
+      if (category.id === "category19") {
+        document.getElementById(category.id + "-header").classList.remove("pulse-bg");
+      }
       categoryGrid.classList.toggle("open");
 
       waitForTransition(categoryGrid, () => {
-        // öppna presenter
         gitpresenter.classList.toggle("open");
 
-        // fyll innehållet
         gitpresenterHeader.innerHTML =
           document.getElementById(category.id + "-header").innerHTML + " <span class='material-symbols-outlined right'>close</span>";
         gitpresenterContent.innerHTML =
@@ -159,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Klick på presenter-header → stäng presenter, öppna grid
   gitpresenterHeader.addEventListener("click", () => {
     gitpresenter.classList.toggle("open");
 
