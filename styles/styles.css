@@ -313,7 +313,7 @@ html::-webkit-scrollbar {
 }
 .gitbasics-content.open {
     border: 1px solid var(--color-primary);
-    max-height: 1500px; /* tillräckligt högt för att rymma innehållet */
+    max-height: 4500px; /* tillräckligt högt för att rymma innehållet */
 }
 .gitbasics.open{
     box-shadow: 2px 2px 6px var(--color-primary);
@@ -417,7 +417,7 @@ html::-webkit-scrollbar {
 }
 
 .gitpresenter.open {
-  max-height: 2000px;
+  max-height: 4000px;
 }
 
 .gitpresenter-header {
@@ -446,7 +446,7 @@ html::-webkit-scrollbar {
     box-shadow: 1px 1px 3px black;
 }
 .gitpresenter-content.open {
-    max-height: 1500px; 
+    max-height: 4000px; 
     
 }
 
