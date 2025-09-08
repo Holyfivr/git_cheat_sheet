@@ -567,82 +567,770 @@
                     <!-- ##################################################################### LOG ################################################################################ -->
                     <div class="gitcategory" id="category6">
                         <div class="gitcategory-header primary-bg" id="category6-header">log</div>
-                        <div class="gitcategory-content" id="category6-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category6-content"><h2 class="kumar-one-outline">Git log</h2>
+<p class="quicksand-text-regular">
+    Displays the commit history of the repository.<br>
+    By default, it shows commits in reverse chronological order (most recent first), including commit hash, author, date, and message.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git log [options] [&lt;revision range&gt;] [&lt;path&gt;...]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>--oneline</code></li>
+    <dd>Shows each commit on a single line (abbreviated hash + message).</dd>
+
+    <li class="list-title"><code>--graph</code></li>
+    <dd>Draws an ASCII graph of branch/merge history alongside commits.</dd>
+
+    <li class="list-title"><code>--decorate</code></li>
+    <dd>Adds branch and tag names to commit listings.</dd>
+
+    <li class="list-title"><code>--stat</code></li>
+    <dd>Shows changed files and line counts for each commit.</dd>
+
+    <li class="list-title"><code>-p</code>, <code>--patch</code></li>
+    <dd>Shows the actual changes (diffs) introduced by each commit.</dd>
+
+    <li class="list-title"><code>--since=&lt;date&gt;</code>, <code>--after=&lt;date&gt;</code></li>
+    <dd>Limits commits to those more recent than the given date.</dd>
+
+    <li class="list-title"><code>--until=&lt;date&gt;</code>, <code>--before=&lt;date&gt;</code></li>
+    <dd>Limits commits to those older than the given date.</dd>
+
+    <li class="list-title"><code>--author=&lt;pattern&gt;</code></li>
+    <dd>Only shows commits by a given author.</dd>
+
+    <li class="list-title"><code>--grep=&lt;pattern&gt;</code></li>
+    <dd>Searches commit messages for the given pattern.</dd>
+
+    <li class="list-title"><code>-n &lt;number&gt;</code></li>
+    <dd>Limits the number of commits shown (e.g. <code>-n 5</code>).</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Show commit history</li>
+        <dd><code>git log</code></dd>
+
+        <li class="list-title">Show 5 most recent commits</li>
+        <dd><code>git log -n 5</code></dd>
+
+        <li class="list-title">Compact one-line history</li>
+        <dd><code>git log --oneline</code></dd>
+
+        <li class="list-title">Visualize branch history with graph</li>
+        <dd><code>git log --oneline --graph --decorate</code></dd>
+
+        <li class="list-title">Show commits by a specific author</li>
+        <dd><code>git log --author="Alice"</code></dd>
+
+        <li class="list-title">Search commit messages for "fix"</li>
+        <dd><code>git log --grep="fix"</code></dd>
+
+        <li class="list-title">Show commits made in the last 2 weeks</li>
+        <dd><code>git log --since="2 weeks ago"</code></dd>
+
+        <li class="list-title">Show commits that modified a specific file</li>
+        <dd><code>git log -- path/to/file.txt</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### DIFF ################################################################################ -->
 
                     <div class="gitcategory" id="category7">
                         <div class="gitcategory-header primary-bg" id="category7-header">diff</div>
-                        <div class="gitcategory-content" id="category7-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category7-content"><h2 class="kumar-one-outline">Git diff</h2>
+<p class="quicksand-text-regular">
+    Shows the differences between commits, branches, the staging area, and the working directory.<br>
+    Commonly used to review changes before staging, before committing, or between branches/commits.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git diff [options] [&lt;commit&gt;] [&lt;commit&gt;] [--] [&lt;path&gt;...]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>--staged</code> / <code>--cached</code></li>
+    <dd>Shows differences between the staged changes (index) and the last commit.</dd>
+
+    <li class="list-title"><code>--name-only</code></li>
+    <dd>Shows only the names of changed files.</dd>
+
+    <li class="list-title"><code>--name-status</code></li>
+    <dd>Shows file names along with their status (Added, Modified, Deleted).</dd>
+
+    <li class="list-title"><code>--color</code></li>
+    <dd>Forces colored output (enabled by default in most terminals).</dd>
+
+    <li class="list-title"><code>-U&lt;n&gt;</code></li>
+    <dd>Controls the number of context lines shown around differences (default is 3).</dd>
+
+    <li class="list-title"><code>commit1 commit2</code></li>
+    <dd>Shows changes between two commits, branches, or tags.</dd>
+
+    <li class="list-title"><code>&lt;path&gt;</code></li>
+    <dd>Limits the diff to specific files or directories.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Show unstaged changes in working directory</li>
+        <dd><code>git diff</code></dd>
+
+        <li class="list-title">Show staged changes (ready to commit)</li>
+        <dd><code>git diff --staged</code></dd>
+
+        <li class="list-title">Show changes between two commits</li>
+        <dd><code>git diff commit1 commit2</code></dd>
+
+        <li class="list-title">Show changes in a specific file</li>
+        <dd><code>git diff HEAD~1 HEAD -- file.txt</code></dd>
+
+        <li class="list-title">Show only file names that changed</li>
+        <dd><code>git diff --name-only</code></dd>
+
+        <li class="list-title">Show file names and status (A/M/D)</li>
+        <dd><code>git diff --name-status</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### BRANCH ################################################################################ -->
 
                     <div class="gitcategory" id="category8">
                         <div class="gitcategory-header primary-bg" id="category8-header">branch</div>
-                        <div class="gitcategory-content" id="category8-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category8-content"><h2 class="kumar-one-outline">Git branch</h2>
+<p class="quicksand-text-regular">
+    Lists, creates, or deletes branches in a repository.<br>
+    Branches are pointers to commits, used to isolate work on features or fixes.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git branch [options] [&lt;branch-name&gt;] [&lt;start-point&gt;]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-a</code>, <code>--all</code></li>
+    <dd>Lists both local and remote branches.</dd>
+
+    <li class="list-title"><code>-r</code>, <code>--remotes</code></li>
+    <dd>Lists only remote-tracking branches.</dd>
+
+    <li class="list-title"><code>-d &lt;branch&gt;</code></li>
+    <dd>Deletes the specified branch (safe delete, refuses if not merged).</dd>
+
+    <li class="list-title"><code>-D &lt;branch&gt;</code></li>
+    <dd>Force deletes the branch, even if unmerged.</dd>
+
+    <li class="list-title"><code>-m &lt;new-name&gt;</code></li>
+    <dd>Renames the current branch to the given name.</dd>
+
+    <li class="list-title"><code>-M &lt;new-name&gt;</code></li>
+    <dd>Forces renaming of the current branch (overwrites if exists).</dd>
+
+    <li class="list-title"><code>--show-current</code></li>
+    <dd>Shows the name of the currently checked-out branch.</dd>
+
+    <li class="list-title"><code>&lt;branch-name&gt;</code></li>
+    <dd>Creates a new branch pointing at the current commit or a given start point.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">List all local branches</li>
+        <dd><code>git branch</code></dd>
+
+        <li class="list-title">List all branches, local and remote</li>
+        <dd><code>git branch -a</code></dd>
+
+        <li class="list-title">Create a new branch called "feature"</li>
+        <dd><code>git branch feature</code></dd>
+
+        <li class="list-title">Delete a branch safely</li>
+        <dd><code>git branch -d feature</code></dd>
+
+        <li class="list-title">Force delete a branch</li>
+        <dd><code>git branch -D old-branch</code></dd>
+
+        <li class="list-title">Rename the current branch</li>
+        <dd><code>git branch -m new-name</code></dd>
+
+        <li class="list-title">Show current branch</li>
+        <dd><code>git branch --show-current</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### CHECKOUT ################################################################################ -->
                     <div class="gitcategory" id="category9">
                         <div class="gitcategory-header primary-bg" id="category9-header">checkout</div>
-                        <div class="gitcategory-content" id="category9-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category9-content"><h2 class="kumar-one-outline">Git checkout</h2>
+<p class="quicksand-text-regular">
+    Switches branches or restores working tree files.<br>
+    Commonly used to move between branches, check out commits, or restore file contents.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git checkout [options] [&lt;branch&gt;|&lt;commit&gt;] [--] [&lt;pathspec&gt;...]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-b &lt;branch&gt;</code></li>
+    <dd>Creates and checks out a new branch.</dd>
+
+    <li class="list-title"><code>-B &lt;branch&gt;</code></li>
+    <dd>Creates or resets a branch to a specific commit and checks it out.</dd>
+
+    <li class="list-title"><code>--detach</code></li>
+    <dd>Checks out a commit directly, putting HEAD into "detached" state.</dd>
+
+    <li class="list-title"><code>-- &lt;pathspec&gt;</code></li>
+    <dd>Checks out specific files or directories from a branch or commit into the working directory.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Switch to an existing branch</li>
+        <dd><code>git checkout develop</code></dd>
+
+        <li class="list-title">Create and switch to a new branch</li>
+        <dd><code>git checkout -b feature</code></dd>
+
+        <li class="list-title">Switch to a specific commit (detached HEAD)</li>
+        <dd><code>git checkout abc1234</code></dd>
+
+        <li class="list-title">Restore a file from a branch</li>
+        <dd><code>git checkout main -- file.txt</code></dd>
+
+        <li class="list-title">Reset a branch to a specific commit</li>
+        <dd><code>git checkout -B feature abc1234</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### MERGE ################################################################################ -->
 
                     <div class="gitcategory" id="category10">
                         <div class="gitcategory-header primary-bg" id="category10-header">merge</div>
-                        <div class="gitcategory-content" id="category10-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category10-content"><h2 class="kumar-one-outline">Git merge</h2>
+<p class="quicksand-text-regular">
+    Combines changes from one branch into another.<br>
+    Most commonly used to merge a feature branch into the current branch.  
+    If changes conflict, Git will pause and require manual resolution before completing the merge.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git merge [options] &lt;branch&gt;...</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>--no-ff</code></li>
+    <dd>Always creates a merge commit, even if the merge could be resolved with a fast-forward.</dd>
+
+    <li class="list-title"><code>--ff-only</code></li>
+    <dd>Refuses to merge unless it can be resolved as a fast-forward (no merge commit).</dd>
+
+    <li class="list-title"><code>--squash</code></li>
+    <dd>Combines all changes from the merged branch into a single commit, without recording merge history.</dd>
+
+    <li class="list-title"><code>--abort</code></li>
+    <dd>Aborts the merge process and resets the working tree to the state before the merge started.</dd>
+
+    <li class="list-title"><code>--continue</code></li>
+    <dd>Continues a merge after conflicts have been resolved.</dd>
+
+    <li class="list-title"><code>--no-edit</code></li>
+    <dd>Uses the default merge commit message without opening an editor.</dd>
+
+    <li class="list-title"><code>--commit</code> / <code>--no-commit</code></li>
+    <dd>Controls whether Git automatically creates a merge commit. With <code>--no-commit</code>, changes are staged but not committed.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Merge a feature branch into the current branch</li>
+        <dd><code>git merge feature-branch</code></dd>
+
+        <li class="list-title">Force a merge commit (disable fast-forward)</li>
+        <dd><code>git merge --no-ff feature-branch</code></dd>
+
+        <li class="list-title">Only merge if fast-forward is possible</li>
+        <dd><code>git merge --ff-only feature-branch</code></dd>
+
+        <li class="list-title">Squash commits into one (without merge history)</li>
+        <dd><code>git merge --squash feature-branch</code></dd>
+
+        <li class="list-title">Abort a merge after conflicts</li>
+        <dd><code>git merge --abort</code></dd>
+
+        <li class="list-title">Continue merge after resolving conflicts</li>
+        <dd><code>git merge --continue</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### REBASE ################################################################################ -->
                     <div class="gitcategory" id="category11">
                         <div class="gitcategory-header primary-bg" id="category11-header">rebase</div>
-                        <div class="gitcategory-content" id="category11-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category11-content"><h2 class="kumar-one-outline">Git rebase</h2>
+<p class="quicksand-text-regular">
+    Reapplies commits from one branch on top of another base commit.<br>
+    Used to maintain a linear project history by moving or combining commits.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git rebase [options] [&lt;upstream&gt;] [&lt;branch&gt;]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-i</code>, <code>--interactive</code></li>
+    <dd>Interactive mode to reorder, squash, or edit commits.</dd>
+
+    <li class="list-title"><code>--continue</code></li>
+    <dd>Continues the rebase after resolving conflicts.</dd>
+
+    <li class="list-title"><code>--abort</code></li>
+    <dd>Aborts the rebase and restores the branch to its original state.</dd>
+
+    <li class="list-title"><code>--skip</code></li>
+    <dd>Skips the current commit during a conflict resolution.</dd>
+
+    <li class="list-title"><code>--onto &lt;newbase&gt;</code></li>
+    <dd>Rebases commits onto a different base commit.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Rebase current branch onto main</li>
+        <dd><code>git rebase main</code></dd>
+
+        <li class="list-title">Interactive rebase last 3 commits</li>
+        <dd><code>git rebase -i HEAD~3</code></dd>
+
+        <li class="list-title">Abort an ongoing rebase</li>
+        <dd><code>git rebase --abort</code></dd>
+
+        <li class="list-title">Continue after fixing conflicts</li>
+        <dd><code>git rebase --continue</code></dd>
+
+        <li class="list-title">Rebase onto another branch</li>
+        <dd><code>git rebase --onto develop feature</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### STASH ################################################################################ -->
                     <div class="gitcategory" id="category12">
                         <div class="gitcategory-header primary-bg" id="category12-header">stash</div>
-                        <div class="gitcategory-content" id="category12-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category12-content"><h2 class="kumar-one-outline">Git stash</h2>
+<p class="quicksand-text-regular">
+    Temporarily saves uncommitted changes (both staged and unstaged) so you can work on something else and reapply them later.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git stash [options] [push]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>save &lt;message&gt;</code></li>
+    <dd>(Deprecated) Save changes with an optional description.</dd>
+
+    <li class="list-title"><code>push -m &lt;message&gt;</code></li>
+    <dd>Saves changes with a custom message.</dd>
+
+    <li class="list-title"><code>list</code></li>
+    <dd>Shows all stashed states.</dd>
+
+    <li class="list-title"><code>apply [&lt;stash&gt;]</code></li>
+    <dd>Applies the stash but keeps it in the stash list.</dd>
+
+    <li class="list-title"><code>pop [&lt;stash&gt;]</code></li>
+    <dd>Applies the stash and removes it from the list.</dd>
+
+    <li class="list-title"><code>drop [&lt;stash&gt;]</code></li>
+    <dd>Removes a stash without applying it.</dd>
+
+    <li class="list-title"><code>clear</code></li>
+    <dd>Removes all stashed entries.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Stash current changes</li>
+        <dd><code>git stash</code></dd>
+
+        <li class="list-title">Stash with a message</li>
+        <dd><code>git stash push -m "WIP: login form"</code></dd>
+
+        <li class="list-title">List all stashes</li>
+        <dd><code>git stash list</code></dd>
+
+        <li class="list-title">Apply most recent stash</li>
+        <dd><code>git stash apply</code></dd>
+
+        <li class="list-title">Pop (apply and remove) the most recent stash</li>
+        <dd><code>git stash pop</code></dd>
+
+        <li class="list-title">Drop a specific stash</li>
+        <dd><code>git stash drop stash@{1}</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### RESET ################################################################################ -->
                     <div class="gitcategory" id="category13">
                         <div class="gitcategory-header primary-bg" id="category13-header">reset</div>
-                        <div class="gitcategory-content" id="category13-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category13-content"><h2 class="kumar-one-outline">Git reset</h2>
+<p class="quicksand-text-regular">
+    Resets the current HEAD to a specified state.<br>
+    Can modify the staging area and/or working directory depending on the mode used.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git reset [options] [&lt;commit&gt;] [--] [&lt;paths&gt;...]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>--soft</code></li>
+    <dd>Moves HEAD to the commit, keeps staging area and working directory unchanged.</dd>
+
+    <li class="list-title"><code>--mixed</code> (default)</li>
+    <dd>Moves HEAD and resets the staging area, but keeps working directory changes.</dd>
+
+    <li class="list-title"><code>--hard</code></li>
+    <dd>Resets HEAD, staging area, and working directory. All changes are lost.</dd>
+
+    <li class="list-title"><code>&lt;commit&gt;</code></li>
+    <dd>Specifies the commit to reset to. Can be SHA, branch name, HEAD~N, etc.</dd>
+
+    <li class="list-title"><code>&lt;paths&gt;</code></li>
+    <dd>If paths are specified, only those files are reset from the index.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Unstage a file (keep working changes)</li>
+        <dd><code>git reset file.txt</code></dd>
+
+        <li class="list-title">Reset to last commit, keep changes staged</li>
+        <dd><code>git reset --soft HEAD~1</code></dd>
+
+        <li class="list-title">Reset to last commit, keep changes in working directory</li>
+        <dd><code>git reset --mixed HEAD~1</code></dd>
+
+        <li class="list-title">Reset to last commit, discard all changes</li>
+        <dd><code>git reset --hard HEAD~1</code></dd>
+
+        <li class="list-title">Reset index for a specific file</li>
+        <dd><code>git reset HEAD file.txt</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### FETCH ################################################################################ -->
                     <div class="gitcategory" id="category14">
                         <div class="gitcategory-header primary-bg" id="category14-header">fetch</div>
-                        <div class="gitcategory-content" id="category14-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category14-content"><h2 class="kumar-one-outline">Git fetch</h2>
+<p class="quicksand-text-regular">
+    Downloads objects and refs from another repository.<br>
+    Unlike <code>git pull</code>, it does not modify your working directory or merge changes.  
+    It only updates remote-tracking branches.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git fetch [options] [&lt;remote&gt;] [&lt;refspec&gt;...]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-a</code>, <code>--all</code></li>
+    <dd>Fetches all remotes.</dd>
+
+    <li class="list-title"><code>-p</code>, <code>--prune</code></li>
+    <dd>Removes remote-tracking branches that no longer exist on the remote.</dd>
+
+    <li class="list-title"><code>--tags</code></li>
+    <dd>Fetches all tags in addition to branches.</dd>
+
+    <li class="list-title"><code>--depth &lt;n&gt;</code></li>
+    <dd>Fetches only the last <code>n</code> commits from the history (shallow fetch).</dd>
+
+    <li class="list-title"><code>--force</code></li>
+    <dd>Forces updating local refs even if it would overwrite changes.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Fetch from default remote (origin)</li>
+        <dd><code>git fetch</code></dd>
+
+        <li class="list-title">Fetch from a specific remote</li>
+        <dd><code>git fetch upstream</code></dd>
+
+        <li class="list-title">Fetch all remotes</li>
+        <dd><code>git fetch --all</code></dd>
+
+        <li class="list-title">Fetch and prune deleted remote branches</li>
+        <dd><code>git fetch --prune</code></dd>
+
+        <li class="list-title">Fetch only last 5 commits</li>
+        <dd><code>git fetch --depth 5</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### PULL ################################################################################ -->
                     <div class="gitcategory" id="category15">
                         <div class="gitcategory-header primary-bg" id="category15-header">pull</div>
-                        <div class="gitcategory-content" id="category15-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category15-content"><h2 class="kumar-one-outline">Git pull</h2>
+<p class="quicksand-text-regular">
+    Fetches changes from a remote repository and immediately integrates them into the current branch.<br>
+    By default, it combines <code>git fetch</code> + <code>git merge</code>.  
+    With certain options, it can use <code>rebase</code> instead of merge.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git pull [options] [&lt;remote&gt;] [&lt;branch&gt;]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>--rebase</code></li>
+    <dd>Rebases current branch on top of the fetched branch instead of merging.</dd>
+
+    <li class="list-title"><code>--no-rebase</code></li>
+    <dd>Explicitly disables rebasing (default is merge).</dd>
+
+    <li class="list-title"><code>--ff-only</code></li>
+    <dd>Only updates if it can be done as a fast-forward. Aborts otherwise.</dd>
+
+    <li class="list-title"><code>--all</code></li>
+    <dd>Fetches all remotes and integrates them.</dd>
+
+    <li class="list-title"><code>&lt;remote&gt;</code></li>
+    <dd>Name of the remote to pull from (default is <code>origin</code>).</dd>
+
+    <li class="list-title"><code>&lt;branch&gt;</code></li>
+    <dd>Specific branch to pull. Defaults to the remote tracking branch for the current branch.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Pull changes from origin’s default branch</li>
+        <dd><code>git pull</code></dd>
+
+        <li class="list-title">Pull a specific branch</li>
+        <dd><code>git pull origin develop</code></dd>
+
+        <li class="list-title">Pull with rebase instead of merge</li>
+        <dd><code>git pull --rebase</code></dd>
+
+        <li class="list-title">Pull only if fast-forward possible</li>
+        <dd><code>git pull --ff-only</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### PUSH ################################################################################ -->
                     <div class="gitcategory" id="category16">
                         <div class="gitcategory-header primary-bg" id="category16-header">push</div>
-                        <div class="gitcategory-content" id="category16-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category16-content"><h2 class="kumar-one-outline">Git push</h2>
+<p class="quicksand-text-regular">
+    Uploads local commits, branches, and tags to a remote repository.<br>
+    Used to share changes with collaborators by updating the remote with your local work.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git push [options] [&lt;remote&gt;] [&lt;branch&gt;]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-u</code>, <code>--set-upstream</code></li>
+    <dd>Sets the upstream (tracking) reference for the branch you’re pushing.</dd>
+
+    <li class="list-title"><code>-f</code>, <code>--force</code></li>
+    <dd>Forces the push even if it will overwrite remote history (dangerous).</dd>
+
+    <li class="list-title"><code>--force-with-lease</code></li>
+    <dd>Safer alternative to force; refuses to overwrite if the remote has new commits you don’t have locally.</dd>
+
+    <li class="list-title"><code>--tags</code></li>
+    <dd>Pushes all local tags to the remote.</dd>
+
+    <li class="list-title"><code>--delete</code></li>
+    <dd>Deletes a remote branch or tag.</dd>
+
+    <li class="list-title"><code>&lt;remote&gt;</code></li>
+    <dd>Name of the remote (default is <code>origin</code>).</dd>
+
+    <li class="list-title"><code>&lt;branch&gt;</code></li>
+    <dd>Branch to push. If omitted, pushes the current branch.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">Push current branch to origin</li>
+        <dd><code>git push origin main</code></dd>
+
+        <li class="list-title">Set upstream and push</li>
+        <dd><code>git push -u origin develop</code></dd>
+
+        <li class="list-title">Force push branch</li>
+        <dd><code>git push --force origin feature</code></dd>
+
+        <li class="list-title">Push all tags</li>
+        <dd><code>git push --tags</code></dd>
+
+        <li class="list-title">Delete a remote branch</li>
+        <dd><code>git push origin --delete feature</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### TAG ################################################################################ -->
                     <div class="gitcategory" id="category17">
                         <div class="gitcategory-header primary-bg" id="category17-header">tag</div>
-                        <div class="gitcategory-content" id="category17-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category17-content"><h2 class="kumar-one-outline">Git tag</h2>
+<p class="quicksand-text-regular">
+    Creates, lists, deletes, or verifies tags.<br>
+    Tags are references to specific commits, often used for marking release points (e.g., v1.0).
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git tag [options] [&lt;tagname&gt;] [&lt;commit&gt;]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-a &lt;tagname&gt;</code></li>
+    <dd>Create an annotated tag with a message, author, and date.</dd>
+
+    <li class="list-title"><code>-m &lt;message&gt;</code></li>
+    <dd>Message to use for annotated tag.</dd>
+
+    <li class="list-title"><code>-d &lt;tagname&gt;</code></li>
+    <dd>Delete a tag.</dd>
+
+    <li class="list-title"><code>-l</code>, <code>--list</code></li>
+    <dd>Lists tags, optionally with a pattern.</dd>
+
+    <li class="list-title"><code>-s &lt;tagname&gt;</code></li>
+    <dd>Create a signed tag (requires GPG setup).</dd>
+
+    <li class="list-title"><code>&lt;commit&gt;</code></li>
+    <dd>The commit the tag should reference. Defaults to HEAD.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">List all tags</li>
+        <dd><code>git tag</code></dd>
+
+        <li class="list-title">Create a lightweight tag</li>
+        <dd><code>git tag v1.0</code></dd>
+
+        <li class="list-title">Create an annotated tag</li>
+        <dd><code>git tag -a v1.0 -m "Release version 1.0"</code></dd>
+
+        <li class="list-title">Tag a specific commit</li>
+        <dd><code>git tag v1.1 abc1234</code></dd>
+
+        <li class="list-title">Delete a tag</li>
+        <dd><code>git tag -d v1.0</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
                     <!-- ##################################################################### REMOTE ################################################################################ -->
                     <div class="gitcategory" id="category18">
                         <div class="gitcategory-header primary-bg" id="category18-header">remote</div>
-                        <div class="gitcategory-content" id="category18-content">asdas<br>d adas<br>d asd</div>
+                        <div class="gitcategory-content" id="category18-content"><h2 class="kumar-one-outline">Git remote</h2>
+<p class="quicksand-text-regular">
+    Manages tracked repositories (remotes).<br>
+    Lets you add, remove, rename, and inspect connections to other repositories.
+</p>
+
+<p class="quicksand-text-regular"><strong>Usage:</strong>
+    <code>git remote [options] [command] [&lt;name&gt;] [&lt;url&gt;]</code>
+</p>
+
+<h2 class="kumar-one-outline">Options</h2>
+<ul>
+    <li class="list-title"><code>-v</code></li>
+    <dd>Shows URLs of remotes when listing.</dd>
+
+    <li class="list-title"><code>add &lt;name&gt; &lt;url&gt;</code></li>
+    <dd>Adds a new remote.</dd>
+
+    <li class="list-title"><code>remove &lt;name&gt;</code> / <code>rm &lt;name&gt;</code></li>
+    <dd>Removes a remote.</dd>
+
+    <li class="list-title"><code>rename &lt;old&gt; &lt;new&gt;</code></li>
+    <dd>Renames an existing remote.</dd>
+
+    <li class="list-title"><code>show &lt;name&gt;</code></li>
+    <dd>Displays information about a specific remote.</dd>
+
+    <li class="list-title"><code>set-url &lt;name&gt; &lt;newurl&gt;</code></li>
+    <dd>Changes the URL for an existing remote.</dd>
+</ul>
+
+<div class="example-box">
+    <h2 class="kumar-one-outline">Examples</h2>
+    <ul>
+        <li class="list-title">List remotes</li>
+        <dd><code>git remote -v</code></dd>
+
+        <li class="list-title">Add a new remote</li>
+        <dd><code>git remote add origin https://github.com/user/project.git</code></dd>
+
+        <li class="list-title">Rename a remote</li>
+        <dd><code>git remote rename origin upstream</code></dd>
+
+        <li class="list-title">Remove a remote</li>
+        <dd><code>git remote remove upstream</code></dd>
+
+        <li class="list-title">Change remote URL</li>
+        <dd><code>git remote set-url origin git@github.com:user/project.git</code></dd>
+    </ul>
+</div>
+</div>
                     </div>
 
 

@@ -168,6 +168,8 @@ function toggleDarkMode(button) {
   document.getElementById("crfooter").classList.toggle("dark");
   document.getElementById("sidebar").classList.toggle("dark");
   document.getElementById("toggleBtn").classList.toggle("dark");
+  document.getElementById("github-icon").classList.toggle("dark");
+  document.getElementById("linkedin-icon").classList.toggle("dark");
   Array.from(
     targetFrame.document.getElementsByClassName("example-box")
   ).forEach((box) => {
@@ -189,9 +191,13 @@ function setBgColor() {
     targetFrame = window.frames["mainframe"] || window;
     targetFrame.document.body.classList.add("dark");
     document.body.classList.add("dark");
+  document.getElementById("github-icon").classList.add("dark");
+  document.getElementById("linkedin-icon").classList.add("dark");
     try {
     document.getElementById("darkmodebtn").classList.add("active");
      document.getElementById("darkmodebtn").innerText = "Light Mode";
+     
+
     } catch (e) {
       console.log("Den hittar inte classlist och innertext på darkmodebtn, men det spelar ingen rooooooooooll (det har att göra med vilken state den är i när funktionen triggas. Det är medvetet)")
     }
