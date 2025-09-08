@@ -41,32 +41,6 @@ try {
   
 }
 
-// ---------------- Modals ---------------- //
-const cards = document.querySelectorAll(".card");
-const modals = document.querySelectorAll(".modal");
-const closes = document.querySelectorAll(".close");
-
-// Opens the modal when a card is clicked
-cards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const modalId = card.getAttribute("data-modal");
-    document.getElementById(modalId).style.display = "flex";
-  });
-});
-
-// Closes the modal when the close button is clicked
-closes.forEach((close) => {
-  close.addEventListener("click", () => {
-    close.closest(".modal").style.display = "none";
-  });
-});
-
-// Closes the modal if user clicks outside of it
-window.addEventListener("click", (e) => {
-  modals.forEach((modal) => {
-    if (e.target === modal) modal.style.display = "none";
-  });
-});
 
 // ---------------- Git Basics Accordion ---------------- //
 document.addEventListener("DOMContentLoaded", () => {
